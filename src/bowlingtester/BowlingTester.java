@@ -6,6 +6,7 @@
 
 package bowlingtester;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -21,9 +22,12 @@ public class BowlingTester {
         // TODO code application logic here
         
         Scanner sc = new Scanner(System.in);
+        
+        ArrayList<Bowling> objectNames = new ArrayList<Bowling>();
         System.out.println("How many bowlers are there?");
         int bowlers = 0;
         Boolean run = true;
+        int counter = 0;
         String playerName = "";
         
         try{
@@ -45,8 +49,8 @@ public class BowlingTester {
         for(int i=0; i<bowlers; i++){
             System.out.println("Please input the name of bowler "+(i+1));
             playerName = sc.nextLine();
-            
-            Bowling user1 = new Bowling(playerName);
+            Bowling a = new Bowling(playerName);
+            objectNames.add(a); //To call an individual object, access the index of that player in the array
             
         }
                 

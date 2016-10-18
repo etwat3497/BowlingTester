@@ -16,6 +16,11 @@ public class Bowling {
     public int numOfPlayers;
     
     
+    public Bowling(){
+        bowler = "Unknown Bowler";
+        numOfPlayers = 0;
+    }
+    
     public Bowling(String name){
         bowler = name;
         numOfPlayers++;

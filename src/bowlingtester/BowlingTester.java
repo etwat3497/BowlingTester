@@ -1,11 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Created by Ethan Watt
+ * On October 19, 2016
+ * Designed to make a bowling emulator
  */
 
 package bowlingtester;
 
+//Import classes
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,24 +17,25 @@ import java.util.Scanner;
 public class BowlingTester {
 
     /**
-     * @param args the command line arguments
+     * pre: String array
+     * post: void
+     * Main method to have the the bowling tester communicate with the bowling class and emulate a 10 frame bowling game
      */
     public static void main(String[] args) {
         // TODO code application logic here
         
         Scanner sc = new Scanner(System.in);
         
-        //Declare variables
-        ArrayList<Bowling> objects = new ArrayList<Bowling>();
+        //Declare array lists; objects arraylist creates unique object names
+        ArrayList<Bowling> objects = new ArrayList();
         ArrayList<String> players = new ArrayList();
         ArrayList<Integer> playerScore = new ArrayList();
         
-        int bowlers = 0, pinsFirst = 0, pinsSecond = 0;
-        
-        Boolean frameLoop = true;
+        //Declare and assign values to variables
+        int bowlers = 0;
         String playerName = "";
-        
         Boolean run = true;
+        
         while(run){
             try{
                 System.out.println("How many bowlers are there?");
@@ -74,45 +76,17 @@ public class BowlingTester {
             //Run for however many bowlers there are
             for(int j=0; j<bowlers; j++){
                 
-                System.out.println("\n"+players.get(j)+"\n----------");
+                
                 //Check how many pins the player got down in their first shot for each object
                 objects.get(j).firstThrow();
                 //Check if the player got a strike and if not determine how many pins are hit down in their second shot for each object
                 objects.get(j).secondThrow();
                 //Calculate the score for each object after the frame is completed
                 objects.get(j).calculatingScore();
-                
-                
-                
-                
-                
             }
-            
         }
-        
-        //Determine the winner of the bowling game
-        System.out.println("\nFINAL SCORES\n------------");
-        for(int m=0; m<bowlers; m++){
-            //Add the final score of each player into an arraylist where the index of the score corresponds to each player
-            playerScore.add(objects.get(m).getScore());
-            //Display the final score
-            System.out.println(players.get(m)+ " had a final score of "+playerScore.get(m)+".");
-        }
-        
-        //Find the max value in the player score array
-        int max = playerScore.get(0);
-
-        for (int i = 1; i < playerScore.size(); i++) {
-            //Run the size of the array to check every index value
-            if (playerScore.get(i) > max) {
-                //Each time a higher value is found than the element in index 1, update the max value
-                max = playerScore.get(i);
-            }      
-        }
-        //Determine the index of the max value
-        int maxPosition = playerScore.indexOf(max);
-        //Output the winner of the bowling game
-        System.out.println("\n\nThe winner is "+players.get(maxPosition)+" with a score of "+playerScore.get(maxPosition));    
+        //Run calculate winner method in bowling class to determine which player wins
+        objects.get(0).calculateWinner(bowlers, objects, players);
         
     }
     

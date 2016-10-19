@@ -91,7 +91,7 @@ public class BowlingTester {
         }
         
         //Determine the winner of the bowling game
-        
+        System.out.println("\nFINAL SCORES\n------------");
         for(int m=0; m<bowlers; m++){
             //Add the final score of each player into an arraylist where the index of the score corresponds to each player
             playerScore.add(objects.get(m).getScore());
